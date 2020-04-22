@@ -16,40 +16,40 @@ http post localhost:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 
 확인은 다음 명령어로 한다.
 
-게이트 설치된 것 확인
+**게이트 설치된 것 확인**
 ```
 http localhost:8080/gate/rest/gates
 ---
 # 결과
-{
-  "_embedded" : {
-    "gates" : [ {
-      "fromSpace" : "out",
-      "toSpace" : "tiger",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8082/gate/rest/gates/1"
-        },
-        "gate" : {
-          "href" : "http://localhost:8082/gate/rest/gates/1"
-        }
-      }
-    } ]
-  },
-  "_links" : {
-    "self" : {
-      "href" : "http://localhost:8082/gate/rest/gates"
-    },
-    "profile" : {
-      "href" : "http://localhost:8082/gate/rest/profile/gates"
-    }
-  }
-}
+            {
+                "_links": {
+                    "gate": {
+                        "href": "http://localhost:8082/gate/rest/gates/1"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/gate/rest/gates/1"
+                    }
+                },
+                "fromSpace": "out",
+                "toSpace": "tiger"
+            },
+            {
+                "_links": {
+                    "gate": {
+                        "href": "http://localhost:8082/gate/rest/gates/2"
+                    },
+                    "self": {
+                        "href": "http://localhost:8082/gate/rest/gates/2"
+                    }
+                },
+                "fromSpace": "tiger",
+                "toSpace": "out"
+            }
 
 ```
 
 
-Space 생성된 것 확인
+**Space 생성된 것 확인**
 ```
 http localhost:8080/space/rest/spaces
 ---
