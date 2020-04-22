@@ -9,8 +9,10 @@ Gateway를 적용했기 때문에 모든 요청은 localhost:8080으로 보내�
 게이트를 설치하면 게이트 설치 이벤트를 받아서 게이트가 연결하는 두개의 공간이 자동으로 생성된다.
 ```
 http post localhost:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
+http post localhost:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
+
 ```
-위 명령의 결과로 gate, out space, tiger space 가 생성된다.
+위 명령의 결과로 "out" space, "tiger" space, "out -> tiger" gate(들어오는 문), "tiger" -> "out" gate(나가는 문)이 생성된다.
 
 확인은 다음 명령어로 한다.
 
@@ -187,4 +189,4 @@ http localhost:8080/keeper/rest/keepers
       }
     } ]
 ```
-Tom Cruise가 호랑이 우리로 파견되었음을 알 수 있다. (다만, 다시 돌아오는 기능은 시간 관계상 구현하지 않았다.)
+Tom Cruise가 호랑이 우리로 파견되었음을 알 수 있다. 2번 게이트로 사람을 지나가게 해서 호랑이 우리의 사람수가 10명 아래로 내려가면 파견된 Tom Cruise는 다시 돌아온다.
