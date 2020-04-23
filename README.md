@@ -180,7 +180,7 @@ http localhost:8080/space/rest/spaces
 위에서 out의 population은 0인데 이는 밖의 인구는 무한하다는 가정하에 항상 0 이상의 값을 갖도록 설정했기 때문이다.이 시스템에서 외부에 사람이 얼마나 있는지는 중요하지 않다.
 
 ## 사육사 고용
-우리 동물원은 특정 동물을 구경하는 사람수가 특정 값(10명)이 넘으면 동물이 스트레스를 받을 수 있어서 사육사를 파견하는 시스템이 있다.
+우리 동물원은 특정 동물을 구경하는 사람수가 특정 값(5명)이 넘으면 동물이 스트레스를 받을 수 있어서 사육사를 파견하는 시스템이 있다.
 사육사를 파견하기 전에 먼저 사육사를 고용해 보자.
 ```
 http post localhost:8080/keeper/rest/keepers name="Brad Pitt"
@@ -211,10 +211,10 @@ http post 52.231.107.109:8080/keeper/rest/keepers name="Tom Cruise"
 1번게이트에 계속 사람을 통과 시켜서 tiger 우리의 인구수를 11명으로 만들어보자.
 ```
 아래 명령어 9번 입력.
-http localhost:8080/gate/passed gate=1 
+http localhost:8080/gate/passed?gate=1 
 
 # cloud
-http 52.231.107.109:8080/gate/passed gate=1
+http 52.231.107.109:8080/gate/passed?gate=1
 ```
 그리고 사육사 상태를 살펴보면
 ```
@@ -319,7 +319,7 @@ http 52.231.107.109:8080/state/
 - 서킷 브레이커 적용함.
 - 모든 서비스에 Readiness Probe를 적용하여 무정지 배포 적용함.
 - 코어 서비스인 Space 서비스에 오토 스케일 적용함.
-- Space 서비스에 configMap 적용함. 동물원 최대 관람 인원을 configMap을 통해서 외부에서 주입.
+- Space 서비스에 configMap 적용함. 동물원 최대 관람 인원을 configMap을 통해서 환경변수로 주입.
 ``` yaml
  env:
  - name: MAX_POPULATION
@@ -327,5 +327,15 @@ http 52.231.107.109:8080/state/
      configMapKeyRef:
        name: max-population-configmap
        key: MAX_POPULATION
+
+```
+- Keeper 서비스에 secret 적용함. 공간 하나당 관람 인원을 secret을 통해서 환경변수로 주입
+``` yaml
+env:
+- name: MAX_ANIMAL_POPULATION
+  valueFrom:
+    secretKeyRef:
+      name: max-animal-population-configmap
+      key: MAX_ANIMAL_POPULATION
 
 ```
