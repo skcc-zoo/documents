@@ -253,5 +253,6 @@ http localhost:8080/state/
         "populate": 10,
         "space": "tiger"
     }
-]
 ```
+# 분석
+![event-storming](https://github.com/skcc-zoo/documents/blob/master/event-storming.png)
