@@ -319,3 +319,13 @@ http 52.231.107.109:8080/state/
 - 서킷 브레이커 적용함.
 - 모든 서비스에 Readiness Probe를 적용하여 무정지 배포 적용함.
 - 코어 서비스인 Space 서비스에 오토 스케일 적용함.
+- Space 서비스에 configMap 적용함. 동물원 최대 관람 인원을 configMap을 통해서 외부에서 주입.
+``` yaml
+ env:
+ - name: MAX_POPULATION
+   valueFrom:
+     configMapKeyRef:
+       name: max-population-configmap
+       key: MAX_POPULATION
+
+```
