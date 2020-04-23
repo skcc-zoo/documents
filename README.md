@@ -254,7 +254,7 @@ Tom Cruise가 호랑이 우리로 파견되었음을 알 수 있다. 2번 게이
 http localhost:8080/pay/buy_ticket
 
 #cloud
-http 52.231.107.109/pay/buy_ticket
+http 52.231.107.109:8080/pay/buy_ticket
 ---
 #결과
 동물원 관람객이 100명 미만일 때
