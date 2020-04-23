@@ -265,3 +265,6 @@ http localhost:8080/state/
 코어 도매인: 게이트 시스템 / 공간 관리 시스템
 서포팅 도매인: 사육사 관리 시스템 / 현황 관리 시스템(CQRS)
 제너럴 도매인: 결제 시스템
+
+## 헥사고날 아키텍쳐
+![hexagonal-architecture](https://github.com/skcc-zoo/documents/blob/master/hexagonal-arch.png)
