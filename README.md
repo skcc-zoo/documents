@@ -37,7 +37,7 @@ Azure ID: admin10
 
 Gateway를 적용했기 때문에 모든 요청은 localhost:8080으로 보내면 된다.
 
-Cloud에 배포된 버전을 테스트 하기 위해서는 52.231.116.243:8080 으로 요청을 보내면 된다.
+Cloud에 배포된 버전을 테스트 하기 위해서는 52.231.107.109:8080 으로 요청을 보내면 된다.
 
 아래 명령어는 모두 httpie 프로그램을 이용한 명령어임.
 
@@ -48,8 +48,8 @@ http post localhost:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
 http post localhost:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 
 # cloud
-http post 52.231.116.243:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
-http post 52.231.116.243:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
+http post 52.231.107.109:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
+http post 52.231.107.109:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 
 ```
 위 명령의 결과로 "out" space, "tiger" space, "out -> tiger" gate(들어오는 문), "tiger" -> "out" gate(나가는 문)이 생성된다.
@@ -61,7 +61,7 @@ http post 52.231.116.243:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 http localhost:8080/gate/rest/gates
 
 # cloud
-http 52.231.116.243:8080/gate/rest/gates
+http 52.231.107.109:8080/gate/rest/gates
 ---
 # 결과
             {
@@ -97,7 +97,7 @@ http 52.231.116.243:8080/gate/rest/gates
 http localhost:8080/space/rest/spaces
 
 #cloud
-http 52.231.116.243:8080/space/rest/spaces
+http 52.231.107.109:8080/space/rest/spaces
 ---
 # 결과
 {
@@ -141,7 +141,7 @@ http 52.231.116.243:8080/space/rest/spaces
 http localhost:8080/gate/passed?gate=1
 
 #cloud
-http 52.231.116.243:8080/gate/passed?gate=1
+http 52.231.107.109:8080/gate/passed?gate=1
 ---
 # 결과
 success
@@ -187,8 +187,8 @@ http post localhost:8080/keeper/rest/keepers name="Brad Pitt"
 http post localhost:8080/keeper/rest/keepers name="Tom Cruise"
 
 #cloud
-http post 52.231.116.243:8080/keeper/rest/keepers name="Brad Pitt"
-http post 52.231.116.243:8080/keeper/rest/keepers name="Tom Cruise"
+http post 52.231.107.109:8080/keeper/rest/keepers name="Brad Pitt"
+http post 52.231.107.109:8080/keeper/rest/keepers name="Tom Cruise"
 ---
 # 결과
 {
@@ -214,7 +214,7 @@ http post 52.231.116.243:8080/keeper/rest/keepers name="Tom Cruise"
 http localhost:8080/gate/passed gate=1 
 
 # cloud
-http 52.231.116.243:8080/gate/passed gate=1
+http 52.231.107.109:8080/gate/passed gate=1
 ```
 그리고 사육사 상태를 살펴보면
 ```
@@ -254,7 +254,7 @@ Tom Cruise가 호랑이 우리로 파견되었음을 알 수 있다. 2번 게이
 http localhost:8080/pay/buy_ticket
 
 #cloud
-http 52.231.116.243/pay/buy_ticket
+http 52.231.107.109/pay/buy_ticket
 ---
 #결과
 동물원 관람객이 100명 미만일 때
@@ -276,7 +276,7 @@ http 52.231.116.243/pay/buy_ticket
 http localhost:8080/state/
 
 # cloud
-http 52.231.116.243:8080/state/
+http 52.231.107.109:8080/state/
 ---
 # 결과
 [
