@@ -257,13 +257,13 @@ http localhost:8080/pay/buy_ticket
 http 52.231.107.109:8080/pay/buy_ticket
 ---
 #결과
-동물원 관람객이 100명 미만일 때
+동물원 관람객이 50명 미만일 때
 {
     "message": "Welcome to my zoo!!",
     "price": 100000
 }
 
-동물원 관람객이 100명이 넘을 때
+동물원 관람객이 50 넘을 때
 {
     "message": "Not available, now. Sorry.",
     "price": 0
