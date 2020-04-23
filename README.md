@@ -1,7 +1,10 @@
 
-MS1 UNIT // 
-10098 //
-원찬희 //
+MS1 UNIT
+
+10098 
+
+원찬희 
+
 Azure ID: admin10
 
 # 서비스 시나리오
@@ -43,6 +46,10 @@ Cloud에 배포된 버전을 테스트 하기 위해서는 52.231.116.243:8080 �
 http post localhost:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
 http post localhost:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 
+# cloud
+http post 52.231.116.243:8080/gate/rest/gates fromSpace="out" toSpace="tiger"
+http post 52.231.116.243:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
+
 ```
 위 명령의 결과로 "out" space, "tiger" space, "out -> tiger" gate(들어오는 문), "tiger" -> "out" gate(나가는 문)이 생성된다.
 
@@ -51,6 +58,9 @@ http post localhost:8080/gate/rest/gates fromSpace="tiger" toSpace="out"
 **게이트 설치된 것 확인**
 ```
 http localhost:8080/gate/rest/gates
+
+# cloud
+http 52.231.116.243:8080/gate/rest/gates
 ---
 # 결과
             {
