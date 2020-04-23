@@ -1,4 +1,9 @@
 
+MS1 UNIT 
+10098
+원찬희
+Azure ID: admin10
+
 # 서비스 시나리오
 ## 티켓 구매 
 1. 매표소 직원은 티켓 구매 요청이 들어오면 공간 관리 시스템에 티켓 발행이 가능한지 문의한다. 이때 Sync방식으로 Request를 보낸다.
@@ -268,3 +273,16 @@ http localhost:8080/state/
 
 ## 헥사고날 아키텍쳐
 ![hexagonal-architecture](https://github.com/skcc-zoo/documents/blob/master/hexagonal-arch.png)
+
+# 구현
+- 모든 MSA는 Spring Boot로 구현하였다.
+- Gateway를 이용하여 진입점을 통일하였다.
+- Oauth를 적용하였으나, 수업시간에 사용한 예제를 그대로 사용한 수준이다.
+- Netflix Hystrix를 사용하여 pay 서비스에 Circuit Breaker를 적용하였다.
+- Pay 서비스와 Space 서비스 간에 동기식 호출을 적용하였다. 코어 시스템인 Space 서비스가 작동하지 않으면 표를 팔지 않는다.
+- 나머지 다른 모든 시스템들은 이벤트 스트림을 이용하여 비동기식 호출 / 장애 격리 / 최종 일관성 테스트를 구현하였다.
+
+# 운영
+- 서킷 브레이커 적용함.
+- 모든 서비스에 Readiness Probe를 적용하여 무정지 배포 적용함.
+- 코어 서비스인 Space 서비스에 오토 스케일 적용함.
