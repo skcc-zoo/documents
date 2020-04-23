@@ -33,6 +33,8 @@ Azure ID: admin10
 
 Gateway를 적용했기 때문에 모든 요청은 localhost:8080으로 보내면 된다.
 
+Cloud에 배포된 버전을 테스트 하기 위해서는 52.231.116.243:8080 으로 요청을 보내면 된다.
+
 아래 명령어는 모두 httpie 프로그램을 이용한 명령어임.
 
 ## 게이트 설치 (동물원 외부에서 호랑이 구경공간으로 이동하는 게이트)
@@ -82,6 +84,9 @@ http localhost:8080/gate/rest/gates
 **Space 생성된 것 확인**
 ```
 http localhost:8080/space/rest/spaces
+
+#cloud
+http 52.231.116.243:8080/space/rest/spaces
 ---
 # 결과
 {
@@ -123,6 +128,9 @@ http localhost:8080/space/rest/spaces
 이 동물원은 IoT 기술을 이용해 사람이 게이트를 통과하면 자동으로 gate 서비스의 api를 호출해주는 시스템을 가지고 있다. 호출되는 api는 다음과 같다.
 ```
 http localhost:8080/gate/passed?gate=1
+
+#cloud
+http 52.231.116.243:8080/gate/passed?gate=1
 ---
 # 결과
 success
@@ -166,6 +174,10 @@ http localhost:8080/space/rest/spaces
 ```
 http post localhost:8080/keeper/rest/keepers name="Brad Pitt"
 http post localhost:8080/keeper/rest/keepers name="Tom Cruise"
+
+#cloud
+http post 52.231.116.243:8080/keeper/rest/keepers name="Brad Pitt"
+http post 52.231.116.243:8080/keeper/rest/keepers name="Tom Cruise"
 ---
 # 결과
 {
@@ -189,6 +201,9 @@ http post localhost:8080/keeper/rest/keepers name="Tom Cruise"
 ```
 아래 명령어 9번 입력.
 http localhost:8080/gate/passed gate=1 
+
+# cloud
+http 52.231.116.243:8080/gate/passed gate=1
 ```
 그리고 사육사 상태를 살펴보면
 ```
@@ -226,6 +241,9 @@ Tom Cruise가 호랑이 우리로 파견되었음을 알 수 있다. 2번 게이
 ```
 # 입장권 구매
 http localhost:8080/pay/buy_ticket
+
+#cloud
+http 52.231.116.243/pay/buy_ticket
 ---
 #결과
 동물원 관람객이 100명 미만일 때
@@ -245,6 +263,9 @@ http localhost:8080/pay/buy_ticket
 어느 동물 우리에 몇명이 있고 어느 사육사가 파견되어있는지를 확인해보자.
 ```
 http localhost:8080/state/
+
+# cloud
+http 52.231.116.243:8080/state/
 ---
 # 결과
 [
